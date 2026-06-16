@@ -1,0 +1,5 @@
+# Core dependency
+requests>=2.25.0
+
+# Optional — enables coloured console output (the tool runs fine without it)
+colorama>=0.4.6

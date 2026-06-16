@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiva-llm-scan"
+version = "1.0.0"
+description = "AIVA — AI Vulnerability Assessment: a VAPT scanner for AI/LLM endpoints (OWASP LLM Top 10)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "<your name>" }]
+keywords = ["llm", "security", "vapt", "owasp", "prompt-injection", "ai-security", "red-team"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Security",
+    "Environment :: Console",
+]
+dependencies = ["requests>=2.25.0"]
+
+[project.optional-dependencies]
+color = ["colorama>=0.4.6"]
+
+[project.urls]
+Homepage = "https://github.com/<your-username>/aiva"
+
+# This is what makes `aiva` runnable as a command after `pip install .`
+[project.scripts]
+aiva = "aiva:main"
+
+[tool.setuptools]
+py-modules = ["aiva"]

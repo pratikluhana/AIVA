@@ -1,0 +1,21 @@
+# ai_vapt_scan — example targets file
+# ------------------------------------
+# One endpoint URL per line. Blank lines are ignored.
+# Anything after a '#' on a line is treated as a comment.
+# URLs without a scheme default to http:// (handy for local inference servers).
+#
+# Run:  python ai_vapt_scan.py -f targets.txt --mode openai --model my-model
+#
+# NOTE: replace these with endpoints you OWN or are AUTHORISED to test.
+
+# --- local inference servers (plain http) ---
+localhost:11434                      # Ollama default port
+http://127.0.0.1:8000                # vLLM / OpenAI-compatible default
+http://localhost:5000                # text-generation-webui API
+
+# --- internal / staging services ---
+https://llm-staging.internal.example.com
+https://chatbot-dev.example.com/api/chat
+
+# --- a full chat-completions URL is fine too ---
+https://my-llm.example.com/v1/chat/completions
