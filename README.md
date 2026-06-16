@@ -22,17 +22,24 @@ exposed/unauthenticated endpoints, live CVE correlation against the NIST NVD).
 
 ## Features
 
-- **Full OWASP LLM Top 10 (2025) probing** — 19 built-in probes across LLM01, LLM02, LLM05,
+- **Full OWASP LLM Top 10 (2025) probing** — ~35 built-in probes across LLM01, LLM02, LLM05,
   LLM06, LLM07, LLM09, LLM10, plus jailbreak/guardrail-robustness tests.
+- **Multi-turn / conversational probes** — catches attacks that build across turns (rule
+  injection, override-after-priming, jailbreak crescendo, privilege escalation).
 - **Works with any endpoint** — OpenAI-compatible, Ollama, or a fully custom request/response
-  shape via `--mode raw`.
+  shape via `--mode raw`; streaming (SSE) endpoints supported with `--stream`.
 - **Infrastructure recon** — fingerprints the serving stack and flags exposed/unauthenticated
   management endpoints (the #1 way self-hosted inference servers get popped).
 - **Live CVE correlation** — matches the detected stack against the NIST NVD API 2.0, with
   built-in reference notes for notable AI-infra CVEs and CISA KEV flagging.
+- **Risk scoring** — a 0–100 score, an A–F grade, and a guardrail-robustness metric per target.
+- **Baseline diff** — `--baseline` flags **NEW** / **EXISTING** / **FIXED** findings for CI gating.
+- **Reports everywhere** — colourised console, JSON, HTML, **Markdown** (`--md`), and **SARIF**
+  (`--sarif`) for the GitHub code-scanning / Security tab; CI-friendly exit codes.
+- **Expanded secret/PII detection** — common key formats + an entropy-based generic finder.
 - **Bring-your-own probes** — add custom test cases specific to your app/policy.
 - **Optional AI judge** — uses the Anthropic API to classify ambiguous responses.
-- **Reports** — colourised console, JSON, and a styled HTML report; CI-friendly exit codes.
+- **Audit log, concurrency, config files** — `--log-file` (JSONL), `--concurrency`, `--config`.
 
 ## Install
 
@@ -73,6 +80,14 @@ aiva -f targets.txt --mode openai --model my-model \
     --html report.html -o results.json --authorized
 ```
 
+Produce CI-friendly output — SARIF for the Security tab, plus a regression diff vs a prior run:
+
+```bash
+aiva "$LLM_URL" --mode openai --model my-model --authorized \
+    --sarif aiva.sarif --md report.md \
+    --baseline last.json -o results.json        # flags NEW vs FIXED findings
+```
+
 ## Documentation
 
 - **[GUIDE.md](GUIDE.md)** — full user guide: every option, connection modes, the complete
@@ -88,6 +103,7 @@ aiva/
 ├── README.md                # this file
 ├── GUIDE.md                 # full documentation
 ├── CHEATSHEET.md            # one-page quick reference
+├── CHANGELOG.md             # version history (see what's new in 2.0)
 ├── requirements.txt         # dependencies
 ├── targets.example.txt      # example targets file → copy to targets.txt
 ├── my_probes.example.json   # example custom-probe corpus → copy to my_probes.json

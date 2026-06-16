@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# AIVA runtime cache
+.aiva_cve_cache.json
+
+# Scan outputs — do NOT commit (may contain sensitive findings about your systems)
+results.json
+report.html
+report*.html
+report.md
+*.report.json
+*.sarif
+*.jsonl
+
+# Your real target list / custom probes — keep local; commit only the .example files
+targets.txt
+my_probes.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

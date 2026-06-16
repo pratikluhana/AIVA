@@ -1,10 +1,10 @@
-# ai_vapt_scan — example targets file
+# AIVA — example targets file
 # ------------------------------------
 # One endpoint URL per line. Blank lines are ignored.
 # Anything after a '#' on a line is treated as a comment.
 # URLs without a scheme default to http:// (handy for local inference servers).
 #
-# Run:  python ai_vapt_scan.py -f targets.txt --mode openai --model my-model
+# Run:  aiva -f targets.txt --mode openai --model my-model
 #
 # NOTE: replace these with endpoints you OWN or are AUTHORISED to test.
 
