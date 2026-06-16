@@ -121,4 +121,4 @@ terms of service.
 
 ## License
 
-[MIT](LICENSE) © 2026 \<your name\>
+[MIT](LICENSE) © 2026 Pratik Luhana
